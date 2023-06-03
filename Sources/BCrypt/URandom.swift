@@ -19,9 +19,9 @@ final class URandom {
         fclose(file)
     }
 
-    func bytes(count: Int) throws -> [UInt8] {
-        var bytes = [Int8](repeating: 0, count: count)
-        guard fread(&bytes, 1, count, file) == count else { throw URandomError.read(path: path, errno: errno) }
+    func bytes(count: UInt) throws -> [UInt8] {
+        var bytes = [Int8](repeating: 0, count: Int(count))
+        guard fread(&bytes, 1, Int(count), file) == count else { throw URandomError.read(path: path, errno: errno) }
 
         return bytes.map { UInt8(bitPattern: $0) }
     }

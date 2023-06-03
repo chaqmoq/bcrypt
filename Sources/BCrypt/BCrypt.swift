@@ -4,7 +4,7 @@ import Foundation
 public struct BCrypt {
     public init() {}
 
-    public func generateRandomBase64EncodedString(count: Int) throws -> String {
+    public func generateRandomBase64EncodedString(count: UInt) throws -> String {
         let randomBytes = try URandom().bytes(count: count)
         let capacity = Int(ceil(Double(count) * 1.37))
         let encodedBytes = UnsafeMutablePointer<Int8>.allocate(capacity: capacity)
