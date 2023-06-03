@@ -34,8 +34,8 @@ enum URandomError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .open(let path, let errno): return "[\(errno)] Can't open a file at \"\(path)\"."
-        case .read(let path, let errno): return "[\(errno)] Can't read a file at \"\(path)\"."
+        case .open(let path, let errno): return "[errno: \(errno)] Can't open a file at \"\(path)\"."
+        case .read(let path, let errno): return "[errno: \(errno)] Can't read a file at \"\(path)\"."
         }
     }
 }
