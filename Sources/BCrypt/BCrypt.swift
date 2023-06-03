@@ -4,12 +4,19 @@ import Foundation
 public struct BCrypt {
     public init() {}
 
+    public func generateRandomBase64EncodedString(count: Int) throws -> String {
+        let randomBytes = try URandom().bytes(count: count)
+        let capacity = Int(ceil(Double(count) * 1.37))
+        let encodedBytes = UnsafeMutablePointer<Int8>.allocate(capacity: capacity)
+        defer { encodedBytes.deallocate() }
+        encode_base64(encodedBytes, randomBytes, randomBytes.count)
+
+        return String(cString: encodedBytes)
+    }
+
     public func generateSalt(cost: UInt, algorithm: Algorithm = ._2b) throws -> String {
         try assertCost(cost)
-        let randomBytes = try URandom().bytes(count: 16)
-        let encodedSaltBytes = UnsafeMutablePointer<Int8>.allocate(capacity: 25)
-        encode_base64(encodedSaltBytes, randomBytes, randomBytes.count)
-        let encodedSalt = String(cString: encodedSaltBytes)
+        let encodedSalt = try generateRandomBase64EncodedString(count: 16)
 
         return algorithm.rawValue + (cost < 10 ? "0\(cost)" : "\(cost)") + "$" + encodedSalt
     }
