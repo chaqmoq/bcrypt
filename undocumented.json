@@ -1,0 +1,124 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 4,
+      "symbol": "BCrypt",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 5,
+      "symbol": "BCrypt.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 7,
+      "symbol": "BCrypt.generateRandomBase64EncodedString(count:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 17,
+      "symbol": "BCrypt.generateSalt(cost:algorithm:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 24,
+      "symbol": "BCrypt.hash(_:cost:algorithm:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 28,
+      "symbol": "BCrypt.hash(_:salt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 57,
+      "symbol": "BCrypt.verify(_:against:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 89,
+      "symbol": "BCryptError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 90,
+      "symbol": "BCryptError.invalidCost(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 91,
+      "symbol": "BCryptError.invalidHash(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 92,
+      "symbol": "BCryptError.invalidPlaintext(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 93,
+      "symbol": "BCryptError.invalidSalt(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 106,
+      "symbol": "BCrypt",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 107,
+      "symbol": "BCrypt.Algorithm",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 108,
+      "symbol": "BCrypt.Algorithm._2a",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 109,
+      "symbol": "BCrypt.Algorithm._2b",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/bcrypt/bcrypt/Sources/BCrypt/BCrypt.swift",
+      "line": 110,
+      "symbol": "BCrypt.Algorithm._2y",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/bcrypt/bcrypt"
+}
