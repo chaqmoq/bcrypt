@@ -104,7 +104,7 @@ public enum BCryptError: LocalizedError {
 }
 
 extension BCrypt {
-    public enum Algorithm: String {
+    public enum Algorithm: String, CaseIterable {
         case _2a = "$2a$"
         case _2b = "$2b$"
         case _2y = "$2y$"
