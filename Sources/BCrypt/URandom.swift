@@ -6,10 +6,11 @@ import Darwin
 #endif
 
 final class URandom {
+    static let defaultPath = "/dev/urandom"
     let path: String
     private let file: UnsafeMutablePointer<FILE>
 
-    init(path: String = "/dev/urandom") throws {
+    init(path: String = defaultPath) throws {
         self.path = path
         guard let file = fopen(path, "rb") else { throw URandomError.open(path: path, errno: errno) }
         self.file = file
