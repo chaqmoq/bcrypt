@@ -11,11 +11,11 @@ public struct BCrypt {
         defer { encodedBytes.deallocate() }
         encode_base64(encodedBytes, randomBytes, randomBytes.count)
 
-        return String(cString: encodedBytes)
+        return .init(.init(cString: encodedBytes).prefix(Int(count)))
     }
 
     public func generateRandomBase64EncodedURLFriendlyString(count: UInt) throws -> String {
-        .init(try generateRandomBase64EncodedString(count: count).prefix(Int(count)))
+        try generateRandomBase64EncodedString(count: count)
             .replacingOccurrences(of: "/", with: "")
             .replacingOccurrences(of: "+", with: "")
             .replacingOccurrences(of: "=", with: "")
