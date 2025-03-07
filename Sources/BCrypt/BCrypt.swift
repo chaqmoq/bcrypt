@@ -14,18 +14,41 @@ public struct BCrypt {
         return String(cString: encodedBytes)
     }
 
-    public func generateSalt(cost: UInt, algorithm: Algorithm = ._2b) throws -> String {
+    public func generateRandomBase64EncodedURLFriendlyString(count: UInt) throws -> String {
+        .init(try generateRandomBase64EncodedString(count: count).prefix(Int(count)))
+            .replacingOccurrences(of: "/", with: "")
+            .replacingOccurrences(of: "+", with: "")
+            .replacingOccurrences(of: "=", with: "")
+    }
+
+    public func generateSalt(
+        cost: UInt,
+        algorithm: Algorithm = ._2b
+    ) throws -> String {
         try assertCost(cost)
         let encodedSalt = try generateRandomBase64EncodedString(count: 16)
 
         return algorithm.rawValue + (cost < 10 ? "0\(cost)" : "\(cost)") + "$" + encodedSalt
     }
 
-    public func hash(_ plaintext: String, cost: UInt = 12, algorithm: Algorithm = ._2b) throws -> String {
-        try hash(plaintext, salt: try generateSalt(cost: cost, algorithm: algorithm))
+    public func hash(
+        _ plaintext: String,
+        cost: UInt = 12,
+        algorithm: Algorithm = ._2b
+    ) throws -> String {
+        try hash(
+            plaintext,
+            salt: try generateSalt(
+                cost: cost,
+                algorithm: algorithm
+            )
+        )
     }
 
-    public func hash(_ plaintext: String, salt: String) throws -> String {
+    public func hash(
+        _ plaintext: String,
+        salt: String
+    ) throws -> String {
         try assertSalt(salt)
         let algorithm: Algorithm
 
@@ -54,7 +77,10 @@ public struct BCrypt {
         return algorithm.rawValue + String(cString: hashedBytes).dropFirst(Algorithm.revisionCount)
     }
 
-    public func verify(_ plaintext: String, against hashedText: String) throws -> Bool {
+    public func verify(
+        _ plaintext: String,
+        against hashedText: String
+    ) throws -> Bool {
         let revision = String(hashedText.prefix(Algorithm.revisionCount))
         guard Algorithm(rawValue: revision) != nil else { throw BCryptError.invalidHash(hashedText) }
         let salt = String(hashedText.prefix(Algorithm.revisionCostSaltCount))
@@ -72,7 +98,8 @@ public struct BCrypt {
     }
 
     private func assertCost(_ cost: UInt) throws {
-        guard cost >= Algorithm.minCost && cost <= Algorithm.maxCost else { throw BCryptError.invalidCost(cost) }
+        guard cost >= Algorithm.minCost && cost <= Algorithm.maxCost
+        else { throw BCryptError.invalidCost(cost) }
     }
 
     private func assertSalt(_ salt: String) throws {
