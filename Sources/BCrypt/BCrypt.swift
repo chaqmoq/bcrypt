@@ -2,20 +2,26 @@ import BCryptC
 import Foundation
 
 public struct BCrypt {
+    public static let bufferSize = 1.37
+
     public init() {}
 
     public func generateRandomBase64EncodedString(count: UInt) throws -> String {
         let randomBytes = try URandom().bytes(count: count)
-        let capacity = Int(ceil(Double(count) * 1.37))
+        let capacity = Int(ceil(Double(count) * Self.bufferSize))
         let encodedBytes = UnsafeMutablePointer<Int8>.allocate(capacity: capacity)
         defer { encodedBytes.deallocate() }
-        encode_base64(encodedBytes, randomBytes, randomBytes.count)
+        encode_base64(
+            encodedBytes,
+            randomBytes,
+            randomBytes.count
+        )
 
-        return .init(.init(cString: encodedBytes).prefix(Int(count)))
+        return .init(cString: encodedBytes)
     }
 
     public func generateRandomBase64EncodedURLFriendlyString(count: UInt) throws -> String {
-        try generateRandomBase64EncodedString(count: count)
+        try generateRandomBase64EncodedString(count: count).prefix(Int(count))
             .replacingOccurrences(of: "/", with: "")
             .replacingOccurrences(of: "+", with: "")
             .replacingOccurrences(of: "=", with: "")

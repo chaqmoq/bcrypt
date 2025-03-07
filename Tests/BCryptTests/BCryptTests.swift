@@ -46,7 +46,7 @@ final class BCryptTests: XCTestCase {
         // Arrange
         let bcrypt = BCrypt()
         let count: UInt = 16
-        let length = Int(ceil(Double(count) * 1.37))
+        let length = Int(ceil(Double(count) * BCrypt.bufferSize))
 
         // Act
         let base64EncodedString = try! bcrypt.generateRandomBase64EncodedString(count: count)
