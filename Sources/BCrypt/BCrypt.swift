@@ -21,10 +21,13 @@ public struct BCrypt {
     }
 
     public func generateRandomBase64EncodedURLFriendlyString(count: UInt) throws -> String {
-        try generateRandomBase64EncodedString(count: count).prefix(Int(count))
+        let extra = UInt(Double(count) * 1.2) + 4
+        return try generateRandomBase64EncodedString(count: extra)
             .replacingOccurrences(of: "/", with: "")
             .replacingOccurrences(of: "+", with: "")
             .replacingOccurrences(of: "=", with: "")
+            .prefix(Int(count))
+            .description
     }
 
     public func generateSalt(
